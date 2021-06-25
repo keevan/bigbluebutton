@@ -148,8 +148,8 @@ begin
   events_xml = File.open(events_xml_path, 'r') { |io| Nokogiri::XML(io) }
   metadata = events_xml.at_xpath('/recording/metadata')
 
-  analytics_callback_url = metadata.attributes['analytics-callback-url']&.content
-  # analytics_callback_url = metadata.key?("analytics-callback-url") ? metadata["analytics-callback-url"].value : nil
+  analytics_callback_url = metadata.attributes['events-callback-url']&.content
+  # analytics_callback_url = metadata.key?("events-callback-url") ? metadata["events-callback-url"].value : nil
   unless analytics_callback_url.nil?
     BigBlueButton.logger.info("Processing events for analytics...")
 
